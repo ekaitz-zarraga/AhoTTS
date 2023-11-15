@@ -1,10 +1,5 @@
+# Heavily patched by Ekaitz Zarraga <ekaitz@elenq.tech>
 include_directories (.)
-#IF(UNIX)
-#	add_definitions(-W -trigraphs)
-#ENDIF(UNIX)
-IF(MSVC)
-    ADD_DEFINITIONS(/D _CRT_SECURE_NO_WARNINGS)
-ENDIF(MSVC)
 add_library(htts
     strl_3.cpp
     clargs.h
@@ -247,6 +242,5 @@ add_library(htts
     es_dur2.cpp
     es_pth1.cpp
     es_pow1.cpp)
-install(TARGETS htts DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
-install(FILES clargs.h symbolexp.h abbacr.hpp listt_i.hpp spl.h spli.h cabecer.h cabctrl.h afwav_i.hpp apost.hpp arch.h callback.h caudio.hpp caudiox.hpp chartype.h choputi.h chset.h comp.hpp ctlist.hpp es_hdic.hpp es_lingp.hpp es_pos.hpp es_t2l.hpp eu_hdic.hpp eu_lingp.hpp eu_pos.hpp eu_t2l.hpp fblock.hpp hdic.hpp HTS_engine.h HTS_hidden.h hts.hpp htts_cfg.h httsdo.hpp htts.hpp httsmsg.h isofilt.h kindof.hpp lingp.hpp listt.hpp mark.hpp numhilvl.hpp percent.hpp phmap.hpp phone.h pronun.hpp roman.h romanhilvl.hpp samp.hpp scapedo.hpp scapeseq.hpp string_gcc.hpp string.hpp strl.hpp symbolexp.h t2l.hpp t2u.hpp tdef.h timehilvl.hpp tnor.h u2w.hpp units.hpp uti_end.h uti.h uttdph.hpp utt.hpp uttph.hpp uttws.hpp wordchop.hpp wrkbuff.h wsdump.hpp xx_uti.hpp DESTINATION  ${CMAKE_INSTALL_PREFIX}/include/AhoTTS )
-install(DIRECTORY ../../bin/data_tts DESTINATION ${CMAKE_INSTALL_PREFIX}/share/AhoTTS)
+install(TARGETS htts DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+install(FILES clargs.h symbolexp.h abbacr.hpp listt_i.hpp spl.h spli.h cabecer.h cabctrl.h afwav_i.hpp apost.hpp arch.h callback.h caudio.hpp caudiox.hpp chartype.h choputi.h chset.h comp.hpp ctlist.hpp es_hdic.hpp es_lingp.hpp es_pos.hpp es_t2l.hpp eu_hdic.hpp eu_lingp.hpp eu_pos.hpp eu_t2l.hpp fblock.hpp hdic.hpp HTS_engine.h HTS_hidden.h hts.hpp htts_cfg.h httsdo.hpp htts.hpp httsmsg.h isofilt.h kindof.hpp lingp.hpp listt.hpp mark.hpp numhilvl.hpp percent.hpp phmap.hpp phone.h pronun.hpp roman.h romanhilvl.hpp samp.hpp scapedo.hpp scapeseq.hpp string_gcc.hpp string.hpp strl.hpp symbolexp.h t2l.hpp t2u.hpp tdef.h timehilvl.hpp tnor.h u2w.hpp units.hpp uti_end.h uti.h uttdph.hpp utt.hpp uttph.hpp uttws.hpp wordchop.hpp wrkbuff.h wsdump.hpp xx_uti.hpp DESTINATION  ${CMAKE_INSTALL_INCLUDEDIR}/AhoTTS )
