@@ -104,8 +104,8 @@ Yon2.
 
 /**********************************************************/
 
-CHAR vowelStr[] = "aeiouAEIOUáéíóúÁÉÍÓÚüÜ"; //INAKI: añadir üÜ
-CHAR consoStr[] = "bcdfghjklmnñpqrstvwxyzBCDFGHJKLMNÑPQRSTVWXYZ";
+CHAR vowelStr[] = "aeiouAEIOU\341\351\355\363\372\301\311\315\323\332\374\334";
+CHAR consoStr[] = "bcdfghjklmn\361pqrstvwxyzBCDFGHJKLMN\321PQRSTVWXYZ";
 
 /**********************************************************/
 
@@ -174,34 +174,34 @@ CHAR uniqVowel(CHAR ch)
   switch  ((unsigned int)ch)  { //inaki (casting)
           case 'a':
           case 'A':
-          case 'á':
-          case 'Á':
+          case CS_atilde:
+          case CS_Atilde:
                retval = 'a';
                break;
           case 'e':
           case 'E':
-          case 'é':
-          case 'É':
+          case CS_etilde:
+          case CS_Etilde:
                retval = 'e';
                break;
           case 'i':
           case 'I':
-          case 'í':
-          case 'Í':
+          case CS_itilde:
+          case CS_Itilde:
                retval = 'i';
                break;
           case 'o':
           case 'O':
-          case 'ó':
-          case 'Ó':
+          case CS_otilde:
+          case CS_Otilde:
                retval = 'o';
                break;
           case 'u':
           case 'U':
-          case 'ú':
-          case 'Ú':
-	  case 'ü':
-	  case 'Ü':
+          case CS_utilde:
+          case CS_Utilde:
+          case CS_uuml:
+          case CS_Uuml:
                retval = 'u';
                break;
           default:
