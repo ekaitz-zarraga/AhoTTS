@@ -81,6 +81,12 @@ Version  dd/mm/aa  Autor     Proposito de la edicion
 /**********************************************************/
 
 /************************************************************************************************************************/
+#ifdef _WIN32
+#define PATH_SEP '\\'
+#else
+#define PATH_SEP '/'
+#endif
+
 #include "hts.hpp"
 #ifdef HTTS_METHOD_HTS
 #ifdef WIN32
@@ -444,75 +450,82 @@ BOOL HTS_U2W::set( const CHAR* param, const CHAR* val )
 		char tmp [5000];
 		strcpy(tmp, val);
 		int len = strlen(tmp);
-		strcpy(tmp+len, "tree-dur.inf");
+        char *pos = tmp+len;
+        // There's no separator, move everything one space to the right and
+        // insert the separator;
+        if (tmp[len-1] != PATH_SEP){
+            tmp[len] = PATH_SEP;
+            pos++;
+        }
+		strcpy(pos, "tree-dur.inf");
 		fn_ts_dur[0]=strdup(tmp);
 
-		strcpy(tmp+len, "tree-lf0.inf");
+		strcpy(pos, "tree-lf0.inf");
 		fn_ts_lf0[0]=strdup(tmp);
 
-		strcpy(tmp+len, "tree-mgc.inf");
+		strcpy(pos, "tree-mgc.inf");
 		fn_ts_mcp[0]=strdup(tmp);
 
-		strcpy(tmp+len, "tree-bap.inf");
+		strcpy(pos, "tree-bap.inf");
 		fn_ts_exc[0]=strdup(tmp);
 
-		strcpy(tmp+len, "dur.pdf");
+		strcpy(pos, "dur.pdf");
 		fn_ms_dur[0]=strdup(tmp);
 
-		strcpy(tmp+len, "lf0.pdf");
+		strcpy(pos, "lf0.pdf");
 		fn_ms_lf0[0]=strdup(tmp);
 
-		strcpy(tmp+len, "mgc.pdf");
+		strcpy(pos, "mgc.pdf");
 		fn_ms_mcp[0]=strdup(tmp);
 
-		strcpy(tmp+len, "bap.pdf");
+		strcpy(pos, "bap.pdf");
 		fn_ms_exc[0]=strdup(tmp);
 
-		strcpy(tmp+len, "tree-gv-lf0.inf");
+		strcpy(pos, "tree-gv-lf0.inf");
 		fn_ts_gvl[0]=strdup(tmp);
 
-		strcpy(tmp+len, "tree-gv-mgc.inf");
+		strcpy(pos, "tree-gv-mgc.inf");
 		fn_ts_gvm[0]=strdup(tmp);
 
-		strcpy(tmp+len, "tree-gv-bap.inf");
+		strcpy(pos, "tree-gv-bap.inf");
 		fn_ts_gve[0]=strdup(tmp);
 
-		strcpy(tmp+len, "gv-lf0.pdf");
+		strcpy(pos, "gv-lf0.pdf");
 		fn_ms_gvl[0]=strdup(tmp);
 
-		strcpy(tmp+len, "gv-mgc.pdf");
+		strcpy(pos, "gv-mgc.pdf");
 		fn_ms_gvm[0]=strdup(tmp);
 
-		strcpy(tmp+len, "gv-bap.pdf");
+		strcpy(pos, "gv-bap.pdf");
 		fn_ms_gve[0]=strdup(tmp);
 
-		strcpy(tmp+len, "gv-switch.inf");
+		strcpy(pos, "gv-switch.inf");
 		fn_gv_switch=strdup(tmp);
-		strcpy(tmp+len, "lf0.win1");
+		strcpy(pos, "lf0.win1");
 		fn_ws_lf0[0]=strdup(tmp);
 
-		strcpy(tmp+len, "lf0.win2");
+		strcpy(pos, "lf0.win2");
 		fn_ws_lf0[1]=strdup(tmp);
 
-		strcpy(tmp+len, "lf0.win3");
+		strcpy(pos, "lf0.win3");
 		fn_ws_lf0[2]=strdup(tmp);
 
-		strcpy(tmp+len, "mgc.win1");
+		strcpy(pos, "mgc.win1");
 		fn_ws_mcp[0]=strdup(tmp);
 
-		strcpy(tmp+len, "mgc.win2");
+		strcpy(pos, "mgc.win2");
 		fn_ws_mcp[1]=strdup(tmp);
 
-		strcpy(tmp+len, "mgc.win3");
+		strcpy(pos, "mgc.win3");
 		fn_ws_mcp[2]=strdup(tmp);
 
-		strcpy(tmp+len, "bap.win1");
+		strcpy(pos, "bap.win1");
 		fn_ws_exc[0]=strdup(tmp);
 
-		strcpy(tmp+len, "bap.win2");
+		strcpy(pos, "bap.win2");
 		fn_ws_exc[1]=strdup(tmp);
 
-		strcpy(tmp+len, "bap.win3");
+		strcpy(pos, "bap.win3");
 		fn_ws_exc[2]=strdup(tmp);
 	return TRUE;
 	}
