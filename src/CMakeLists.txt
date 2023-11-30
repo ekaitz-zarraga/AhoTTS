@@ -1,6 +1,13 @@
 # Heavily patched by Ekaitz Zarraga <ekaitz@elenq.tech>
+
+set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ ${CMAKE_CXX_STANDARD_LIBRARIES}")
+
+if(MINGW)
+     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
+endif()
+
 include_directories (.)
-add_library(htts SHARED
+set(srcs
     strl_3.cpp
     clargs.h
     clargs.c
@@ -242,8 +249,13 @@ add_library(htts SHARED
     es_dur2.cpp
     es_pth1.cpp
     es_pow1.cpp)
-target_compile_options(htts PRIVATE -g -Wall -Wextra)
+add_library(objlib OBJECT ${srcs})
+target_compile_options(objlib PRIVATE -g -Wall -Wextra)
+
+set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)
+add_library(htts        SHARED $<TARGET_OBJECTS:objlib>)
 install(TARGETS htts DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+
 install(FILES clargs.h
               symbolexp.h
               abbacr.hpp
