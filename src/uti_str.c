@@ -21,6 +21,7 @@ Copyrights:
 	 Country (UPV/EHU)
     *2011-2015 Aholab Signal Processing Laboratory, University of the Basque
 	  Country (UPV/EHU)
+    *2023-2023 Ekaitz Zarraga <ekaitz@elenq.tech>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

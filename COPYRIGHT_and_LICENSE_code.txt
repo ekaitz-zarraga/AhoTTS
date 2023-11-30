@@ -28,6 +28,7 @@ Copyrights:
 	  School of Science and Engineering
 	*2011-2012 Aholab Signal Processing Laboratory, University of the Basque
 	  Country (UPV/EHU)
+	*2023-2023 Ekaitz Zarraga <ekaitz@elenq.tech>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
