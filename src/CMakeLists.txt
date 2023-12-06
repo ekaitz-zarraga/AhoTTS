@@ -250,6 +250,16 @@ set(srcs
     es_pth1.cpp
     es_pow1.cpp)
 add_library(objlib OBJECT ${srcs})
+
+find_library(MATH_LIBRARY m)
+if(MATH_LIBRARY)
+    target_link_libraries(objlib PUBLIC ${MATH_LIBRARY})
+endif()
+find_library(PTHREAD_LIBRARY pthread)
+if(PTHREAD_LIBRARY)
+    target_link_libraries(objlib PUBLIC ${PTHREAD_LIBRARY})
+endif()
+
 target_compile_options(objlib PRIVATE -g -Wall -Wextra)
 
 set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)
